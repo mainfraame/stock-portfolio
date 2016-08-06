@@ -6,9 +6,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './index.jsx',
+    entry: path.resolve('./public/index.jsx'),
     output: {
-        path: '../dist',
+        path: path.resolve('./dist'),
         filename: 'bundle.js'
     },
     module: {
@@ -34,19 +34,19 @@ module.exports = {
     },
     resolve: {
         alias: {
-            actions: path.resolve('./redux/actions'),
-            components: path.resolve('./components'),
-            reducers: path.resolve('./redux/reducers'),
-            store: path.resolve('./redux/store'),
-            utils: path.resolve('./utils'),
-            views: path.resolve('./views')
+            actions: path.resolve('./public/redux/actions'),
+            components: path.resolve('./public/components'),
+            reducers: path.resolve('./public/redux/reducers'),
+            store: path.resolve('./public/redux/store'),
+            utils: path.resolve('./public/utils'),
+            views: path.resolve('./public/views')
         },
         extensions: ['', '.js', '.jsx'],
         root: path.resolve(__dirname)
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'index.html'
+            template: path.resolve('./public/index.html')
         })
     ],
     sassLoader: {

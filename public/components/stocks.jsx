@@ -32,7 +32,10 @@ export default class Stocks extends React.Component {
             <tr key={stock.symbol}>
                 <td>{stock.company}</td>
                 <td>{stock.symbol}</td>
-                <td>{stock.LastTradePriceOnly || 0}</td>
+                <td>
+                    {stock.LastTradePriceOnly || 0}
+                    <span className={changeClass}/>
+                </td>
                 <td>
                     <input type='text'
                            className='form-control'
@@ -41,7 +44,6 @@ export default class Stocks extends React.Component {
                 </td>
                 <td>
                     {((stock.LastTradePriceOnly || 0) * Number(stock.amount)).toFixed(2)}
-                    <span className={changeClass}/>
                 </td>
                 <td>
                     <button className='btn btn-primary'
