@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.jsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress",
     "server": "node private/index.js"
   },
