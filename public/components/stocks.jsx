@@ -44,7 +44,8 @@ export default class Stocks extends React.Component {
                     <span className={changeClass}/>
                 </td>
                 <td>
-                    <button onClick={this.props.onRemove.bind(this,stock)}>
+                    <button className='btn btn-primary'
+                            onClick={this.props.onRemove.bind(this,stock)}>
                         <i className='glyphicon glyphicon-trash'/>
                     </button>
                 </td>
