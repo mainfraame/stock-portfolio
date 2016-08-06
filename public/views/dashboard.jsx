@@ -27,8 +27,8 @@ class Dashboard extends React.Component {
                     </div>
                 </nav>
                 <Stocks stocks={this.props.stocks}
-                        onAdjustAmount={this.props.adjustAmount}
-                        onRemove={this.props.removeStock}
+                        adjustAmount={this.props.adjustAmount}
+                        removeStock={this.props.removeStock}
                         getQuotes={this.props.getQuotes}/>
             </section>
         );

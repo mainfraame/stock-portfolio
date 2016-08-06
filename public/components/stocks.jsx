@@ -39,7 +39,7 @@ export default class Stocks extends React.Component {
                 <td>
                     <input type='text'
                            className='form-control'
-                           onKeyUp={this.onAmountChange.bind(this,stock)}
+                           onKeyUp={this.adjustAmount.bind(this,stock)}
                            defaultValue={stock.amount}/>
                 </td>
                 <td>
@@ -47,7 +47,7 @@ export default class Stocks extends React.Component {
                 </td>
                 <td>
                     <button className='btn btn-primary'
-                            onClick={this.props.onRemove.bind(this,stock)}>
+                            onClick={this.props.removeStock.bind(this,stock)}>
                         <i className='glyphicon glyphicon-trash'/>
                     </button>
                 </td>
