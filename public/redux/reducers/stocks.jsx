@@ -18,14 +18,12 @@ export default function reducer(state = [], action = {}) {
             });
         case 'QUOTES_READY':
             return state.map((stock) => {
-                let copy = action.quotes.reduce((results, quote)=> {
+                return action.quotes.reduce((results, quote)=> {
                     if (quote.symbol === stock.symbol) {
                         results.push(Object.assign(quote, stock));
                     }
                     return results;
                 }, [])[0];
-                console.log(copy);
-                return copy;
             });
         default:
             return state;

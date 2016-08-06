@@ -8,6 +8,7 @@ export default class Stocks extends React.Component {
     }
 
     componentDidMount() {
+        this.pullPrices();
         this.pull = setInterval(this.pullPrices.bind(this), 5000);
     }
 
@@ -25,6 +26,8 @@ export default class Stocks extends React.Component {
     }
 
     createRow(stock) {
+        let changeClass = parseFloat(stock.PercentChange || 0) > 0 ? 'glyphicon glyphicon-arrow-up' : 'glyphicon glyphicon-arrow-down';
+
         return (
             <tr key={stock.symbol}>
                 <td>
@@ -44,6 +47,7 @@ export default class Stocks extends React.Component {
                 </td>
                 <td>
                     {((stock.LastTradePriceOnly || 0) * Number(stock.amount)).toFixed(2)}
+                    <span className={changeClass}/>
                 </td>
                 <td>
                     <button className="glyphicon glyphicon-trash"
@@ -57,14 +61,14 @@ export default class Stocks extends React.Component {
         return (
             <table className="table table-striped">
                 <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>Symbol</th>
-                        <th>Last Price</th>
-                        <th># of Shares</th>
-                        <th>Market Value</th>
-                        <th>-</th>
-                    </tr>
+                <tr>
+                    <th>Company</th>
+                    <th>Symbol</th>
+                    <th>Last Price</th>
+                    <th># of Shares</th>
+                    <th>Market Value</th>
+                    <th>-</th>
+                </tr>
                 </thead>
                 <tbody>
                 {this.props.stocks.map(this.createRow.bind(this))}
