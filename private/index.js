@@ -13,7 +13,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../dist')));
 
 controllers.forEach((config)=> {
-    app[config.method](config.path, require(config.controller)[config.method]);
+    app[config.method](config.path, require(config.controller)[config.controllerMethod]);
 });
 
 app.listen(3000, () => {
