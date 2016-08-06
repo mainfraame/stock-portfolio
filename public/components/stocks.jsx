@@ -30,18 +30,12 @@ export default class Stocks extends React.Component {
 
         return (
             <tr key={stock.symbol}>
-                <td>
-                    {stock.company}
-                </td>
-                <td>
-                    {stock.symbol}
-                </td>
-                <td>
-                    {stock.LastTradePriceOnly || 0}
-                </td>
+                <td>{stock.company}</td>
+                <td>{stock.symbol}</td>
+                <td>{stock.LastTradePriceOnly || 0}</td>
                 <td>
                     <input type='text'
-                           className="form-control"
+                           className='form-control'
                            onKeyUp={this.onAmountChange.bind(this,stock)}
                            defaultValue={stock.amount}/>
                 </td>
@@ -50,8 +44,9 @@ export default class Stocks extends React.Component {
                     <span className={changeClass}/>
                 </td>
                 <td>
-                    <button className="glyphicon glyphicon-trash"
-                            onClick={this.props.onRemove.bind(this,stock)}/>
+                    <button onClick={this.props.onRemove.bind(this,stock)}>
+                        <i className='glyphicon glyphicon-trash'/>
+                    </button>
                 </td>
             </tr>
         );
@@ -59,7 +54,7 @@ export default class Stocks extends React.Component {
 
     render() {
         return (
-            <table className="table table-striped">
+            <table className='table table-striped'>
                 <thead>
                 <tr>
                     <th>Company</th>

@@ -10,6 +10,7 @@ export const getSuggestions = (symbol) => {
         } else {
             dispatch(suggestionsReady([]));
         }
+
     };
 
     return _.debounce(service, 300, {leading: true, trailing: true});

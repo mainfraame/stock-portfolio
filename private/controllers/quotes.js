@@ -1,12 +1,17 @@
 const http = require('request');
 
+
+const getQuoteUrl = (symbols) => {
+    return 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from yahoo.finance.quotes where symbol in ("' + symbols.join(',') + '")') + '&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env';
+};
+
 module.exports = {
     get: (request, response) => {
         if (!Array.isArray(request.query.symbol)) {
             request.query.symbol = [request.query.symbol];
         }
-        var url = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from yahoo.finance.quotes where symbol in ("' + request.query.symbol.join(',') + '")') + '&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env';
-        http({url: url, json: true}, (error, headers, body) => {
+
+        http({url: getQuoteUrl(request.query.symbol), json: true}, (error, headers, body) => {
 
             if (!Array.isArray(body.query.results.quote)) {
                 body.query.results.quote = [body.query.results.quote];
