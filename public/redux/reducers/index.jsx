@@ -6,5 +6,3 @@ export default combineReducers({
     stocks,
     suggestions
 });
-
-//export default stocks;

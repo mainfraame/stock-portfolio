@@ -1,0 +1,38 @@
+[
+  {
+    "method": "get",
+    "path": "/suggestions/:symbol",
+    "controller": "./controllers/suggestions",
+    "method": "get"
+  },
+  {
+    "method": "get",
+    "path": "/quotes",
+    "controller": "./controllers/quotes",
+    "method": "get"
+  },
+  {
+    "method": "get",
+    "path": "/stocks",
+    "controller": "./controllers/stocks",
+    "method": "get"
+  },
+  {
+    "method": "put",
+    "path": "/stocks/:symbol",
+    "controller": "./controllers/stocks",
+    "method": "save"
+  },
+  {
+    "method": "post",
+    "path": "/stocks/:symbol",
+    "controller": "./controllers/stocks",
+    "method": "update"
+  },
+  {
+    "method": "delete",
+    "path": "/stocks/:symbol",
+    "controller": "./controllers/stocks",
+    "method": "delete"
+  }
+]

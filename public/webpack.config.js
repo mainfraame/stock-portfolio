@@ -20,17 +20,26 @@ module.exports = {
                 query: {
                     presets: ['es2015', 'react', 'stage-0']
                 }
-            }
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css", "sass"]
+            },
+            {test: /\.woff2$/, loader: 'url-loader?limit=10000&minetype=application/font-woff2'},
+            {test: /\.woff$/, loader: 'url-loader?limit=10000&minetype=application/font-woff'},
+            {test: /\.ttf$/, loader: 'file-loader'},
+            {test: /\.eot$/, loader: 'file-loader'},
+            {test: /\.svg$/, loader: 'file-loader'}
         ]
     },
     resolve: {
         alias: {
-            'actions': path.resolve(__dirname,'./redux/actions'),
-            'controllers': path.resolve(__dirname,'./controllers'),
-            'components': path.resolve(__dirname,'./components'),
-            'reducers': path.resolve(__dirname,'./redux/reducers'),
-            'stores': path.resolve(__dirname,'./redux/stores'),
-            'utils': path.resolve(__dirname,'./utils')
+            actions: path.resolve('./redux/actions'),
+            components: path.resolve('./components'),
+            reducers: path.resolve('./redux/reducers'),
+            store: path.resolve('./redux/store'),
+            utils: path.resolve('./utils'),
+            views: path.resolve('./views')
         },
         extensions: ['', '.js', '.jsx'],
         root: path.resolve(__dirname)
@@ -38,12 +47,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html'
-        }),
-        new CopyWebpackPlugin([
-            {
-                from: './views/style.css',
-                to: '../dist/style.css'
-            }
-        ])
-    ]
+        })
+    ],
+    sassLoader: {
+        includePaths: [path.resolve('./node_modules/bootstrap/scss')]
+    }
 };

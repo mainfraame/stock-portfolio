@@ -3,16 +3,19 @@ import _ from 'lodash'
 
 export const getSuggestions = (symbol) => {
     const service = (dispatch) => {
-        axios.get('/ticker/' + symbol).then((suggestions)=> {
-            console.log('suggestions', suggestions.data);
-            dispatch(suggestionsReady(suggestions.data));
-        });
+        if (symbol !== '') {
+            axios.get('/suggestions/' + symbol).then((suggestions)=> {
+                dispatch(suggestionsReady(suggestions.data));
+            });
+        } else {
+            dispatch(suggestionsReady([]));
+        }
     };
 
-    return _.debounce(service, 300, {trailing: true});
+    return _.debounce(service, 300, {leading: true, trailing: true});
 };
 
-export const suggestionsReady = (suggestions) => {
+const suggestionsReady = (suggestions) => {
     return {
         type: 'SUGGESTIONS_READY',
         suggestions: suggestions

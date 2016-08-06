@@ -19,12 +19,18 @@ class TypeAhead extends React.Component {
 
     render() {
         return (
-            <div>
-                <input type="text" onKeyUp={this.onKeyUp.bind(this)}/>
-                <ul className="typeAhead">
+            <div className='navbar-form navbar-left type-ahead'>
+                <input type='text'
+                       className='form-control'
+                       onKeyUp={this.onKeyUp.bind(this)}
+                       placeholder='search for stock'/>
+                <ul>
                     {this.props.suggestions.map((suggestion) => {
-                        return <li
-                            onClick={this.props.onSelect.bind(this,suggestion)}>{suggestion.company} {suggestion.symbol}</li>
+                        return (
+                            <li onClick={this.props.onSelect.bind(this, suggestion)} key={suggestion.symbol}>
+                                {suggestion.company} {suggestion.symbol}
+                            </li>
+                        );
                     })}
                 </ul>
             </div>
