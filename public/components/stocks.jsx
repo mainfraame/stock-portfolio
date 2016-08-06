@@ -20,9 +20,9 @@ export default class Stocks extends React.Component {
         this.props.getQuotes(this.props.stocks);
     }
 
-    onAmountChange(stock, e) {
+    adjustAmount(stock, e) {
         stock.amount = e.target.value;
-        this.props.onAdjustAmount(stock);
+        this.props.adjustAmount(stock);
     }
 
     createRow(stock) {
