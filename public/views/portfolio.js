@@ -1,6 +1,6 @@
 'use strict';
 
-import template from 'html!views/portfolio.html';
+import template from 'html!./portfolio.html';
 
 module.exports = {
     template: template,
@@ -24,14 +24,6 @@ module.exports = {
             });
         };
 
-        this.$onInit = () => {
-            quotesInterval = $interval(getQuotes, 5000);
-            $stocks.getAll().then((stocks) => {
-                this.stocks = stocks;
-                getQuotes();
-            });
-        };
-
         this.$onDestroy = () => {
             $interval.cancel(quotesInterval);
         };
@@ -50,9 +42,14 @@ module.exports = {
         };
 
         this.updateShares = (stock) => {
-            $stocks.updateShares(stock).then(()=> {
-
-            });
+            $stocks.updateShares(stock);
         };
+
+        quotesInterval = $interval(getQuotes, 5000);
+
+        $stocks.getAll().then((stocks) => {
+            this.stocks = stocks;
+            getQuotes();
+        });
     }]
 };

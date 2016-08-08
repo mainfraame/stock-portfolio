@@ -1,9 +1,7 @@
 'use strict';
 
-import template from 'html!./app.html';
-
 module.exports = {
-    template: template,
+    template: '<ng-outlet class="col-md-12"></ng-outlet>',
     $routeConfig: [
         {path: '/portfolio', name: 'Portfolio', component: 'portfolio', useAsDefault: true}
     ]

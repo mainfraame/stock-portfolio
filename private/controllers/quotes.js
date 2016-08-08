@@ -11,8 +11,7 @@ module.exports = {
         }
 
         http({url: getQuoteUrl(request.query.symbol), json: true}, (error, headers, body) => {
-
-            if (body.query) {
+            if(!error) {
                 if (!Array.isArray(body.query.results.quote)) {
                     body.query.results.quote = [body.query.results.quote];
                 }

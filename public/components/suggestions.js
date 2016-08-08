@@ -1,9 +1,20 @@
 'use strict';
 
-import template from 'html!components/suggestions.html';
-
 module.exports = {
-    template: template,
+    template: `<section class="stock-suggestions">
+        <input type="text"
+               class="form-control"
+               ng-model="$ctrl.term"
+               ng-change="$ctrl.onChange()"
+               ng-model-options="{ debounce: 300 }"
+               placeholder="search for stock"/>
+        <ul ng-if="$ctrl.suggestions.length > 0">
+            <li ng-repeat="suggestion in $ctrl.suggestions"
+                ng-click="$ctrl.select(suggestion)">
+                <span>{{ suggestion.company }} {{ suggestion.symbol }}</span>
+            </li>
+        </ul>
+    </section>`,
     bindings: {
         onSelect: '=',
         selected: '='
