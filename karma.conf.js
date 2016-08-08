@@ -1,50 +1,58 @@
-var webpackConfig = require('./webpack.test');
+'use strict';
 
-// Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
-module.exports = function karmaConfig(config) {
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
+module.exports = (config) => {
     config.set({
-        frameworks: [
-            // Reference: https://github.com/karma-runner/karma-jasmine
-            // Set framework to jasmine
-            'jasmine'
-            //'webpack'
-        ],
-
-        reporters: [
-            // Reference: https://github.com/mlex/karma-spec-reporter
-            // Set reporter to print detailed results to console
-            'spec',
-
-            // Reference: https://github.com/karma-runner/karma-coverage
-            // Output code coverage files
-            'coverage'
-        ],
-
-        files: [
-            // Grab all files in the app folder that contain .test.
-            './public/tests.webpack.js'
-        ],
-
-        preprocessors: {
-            // Reference: http://webpack.github.io/docs/testing.html
-            // Reference: https://github.com/webpack/karma-webpack
-            // Convert files with webpack and load sourcemaps
-            './public/tests.webpack.js': ['webpack', 'sourcemap']
-        },
-
-        browsers: [
-            // Run tests using PhantomJS
-            'Chrome'
-        ],
-
-        singleRun: true,
-
-        // Configure code coverage reporter
+        browsers: ['PhantomJS'],
         coverageReporter: {
             dir: './dist/coverage/',
             type: 'html'
         },
-
-        webpack: webpackConfig
+        files: ['./public/_tests_/config.js'],
+        frameworks: ['jasmine', 'es6-shim'],
+        preprocessors: {
+            './public/_tests_/config.js': ['webpack', 'sourcemap']
+        },
+        reporters: ['spec', 'coverage'],
+        singleRun: true,
+        webpack: {
+            devtool: 'inline-source-map',
+            module: {
+                preLoaders: [
+                    {
+                        test: /\.js$/,
+                        exclude: [
+                            /node_modules/,
+                            /\.spec\.js$/
+                        ],
+                        loader: 'isparta-instrumenter'
+                    }
+                ],
+                loaders: [
+                    {
+                        test: /\.js$/,
+                        loader: 'babel-loader',
+                        exclude: /node_modules/,
+                        query: {
+                            presets: ['es2015']
+                        }
+                    }
+                ],
+                resolve: {
+                    extensions: ['', '.js', '.html'],
+                    root: __dirname
+                },
+                htmlLoader: {
+                    ignoreCustomFragments: [/\{\{.*?}}/]
+                }
+            },
+            sassLoader: {
+                includePaths: [
+                    './node_modules/bootstrap/scss'
+                ]
+            }
+        }
     });
 };

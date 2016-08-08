@@ -4,7 +4,7 @@ import quotes from '../fixtures/quotes';
 import quotedStocks from '../fixtures/quotedStocks';
 import stocks from '../fixtures/stocks';
 
-describe('Given Portfolio Component is rendered', function () {
+describe('Given Portfolio component is rendered', function () {
     var controller;
     var scope;
     var $interval;

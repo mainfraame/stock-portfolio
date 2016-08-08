@@ -9,7 +9,7 @@ module.exports = {
                ng-model-options="{ debounce: 300 }"
                placeholder="search for stock"/>
         <ul ng-if="$ctrl.suggestions.length > 0">
-            <li ng-repeat="suggestion in $ctrl.suggestions"
+            <li ng-repeat="suggestion in $ctrl.suggestions track by $index"
                 ng-click="$ctrl.select(suggestion)">
                 <span>{{ suggestion.company }} {{ suggestion.symbol }}</span>
             </li>

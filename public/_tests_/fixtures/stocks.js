@@ -1,4 +1,6 @@
-module.exports = [
+'use strict';
+
+export default [
     {
         id: 2,
         symbol: 'AA',

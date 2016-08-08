@@ -1,4 +1,6 @@
-module.exports = [
+'use strict';
+
+export default [
     {
         symbol: 'AA',
         LastTradePriceOnly: 125.00,

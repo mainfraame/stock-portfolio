@@ -1,10 +1,1 @@
-{
-    "presets": ["es2015"],
-    "env": {
-     "test": {
-       "plugins": [
-         [ "babel-plugin-webpack-alias", { "config": "./public/tests.webpack.js" } ]
-       ]
-     }
-    }
-}
+{"presets":["es2015"]}
