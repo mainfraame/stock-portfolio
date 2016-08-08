@@ -3,7 +3,7 @@
 import angular from 'angular';
 import '../../components/index';
 
-describe('Given StocksIndicator component is rendered',function(){
+describe('Given StocksIndicator component is rendered', function () {
     var element;
     var scope;
 
@@ -22,7 +22,7 @@ describe('Given StocksIndicator component is rendered',function(){
         }
     ];
 
-    scenarios.forEach(function (scenario,i) {
+    scenarios.forEach(function (scenario) {
         describe('When StocksIndicator is rendered with change value of ' + scenario.change, function () {
             beforeEach(angular.mock.module('components'));
             beforeEach(angular.mock.inject(function ($rootScope, $compile) {
