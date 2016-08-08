@@ -1,3 +1,5 @@
+'use strict';
+
 const http = require('request');
 
 const getQuoteUrl = (symbols) => {
