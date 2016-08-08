@@ -1,6 +1,6 @@
 'use strict';
 
-let Stocks = require('../models/stocks');
+const Stocks = require('../models/stocks');
 
 module.exports = {
     create: (request, response) => {

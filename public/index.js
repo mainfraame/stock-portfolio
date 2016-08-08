@@ -10,7 +10,7 @@ import './views/index';
 
 angular.module('app', ['ngComponentRouter', 'components', 'services', 'views'])
     .component('app', {
-        template: `<ng-outlet class="col-md-12"></ng-outlet>`,
+        template: `<ng-outlet></ng-outlet>`,
         $routeConfig: [
             {
                 path: '/portfolio',

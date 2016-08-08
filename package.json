@@ -1,7 +1,7 @@
 {
   "name": "stock-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "allows you to track your stock portfolio, with live updates",
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack --progress",
@@ -9,7 +9,7 @@
     "test": "./node_modules/.bin/karma start",
     "test:live": "./node_modules/.bin/karma start --auto-watch --no-single-run"
   },
-  "author": "",
+  "author": "dayne mentier",
   "license": "MIT",
   "dependencies": {
     "@angular/router": "^0.2.0",

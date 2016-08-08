@@ -1,4 +1,4 @@
-<section>
+<section class="col-xs-12">
     <h1>Portfolio</h1>
     <stock-suggestions on-select="$ctrl.onSelect"
                        selected="$ctrl.stocks"></stock-suggestions>
@@ -19,8 +19,8 @@
             <td>{{ ::stock.company }}</td>
             <td>{{ ::stock.symbol }}</td>
             <td class="text-right">
+                {{ stock.LastTradePriceOnly | currency }}
                 <stock-indicator change="stock.PercentChange"></stock-indicator>
-                {{ stock.LastTradePriceOnly }}
             </td>
             <td>
                 <input type="number"
