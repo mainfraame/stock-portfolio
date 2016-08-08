@@ -1,6 +1,6 @@
 {
   "name": "stock-portfolio",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "allows you to track your stock portfolio, with live updates",
   "main": "index.js",
   "scripts": {
