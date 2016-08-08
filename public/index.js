@@ -21,6 +21,4 @@ angular.module('app', ['ngComponentRouter', 'components', 'services', 'views'])
         ]
     })
     .value('$routerRootComponent', 'app')
-    .config(['$locationProvider', function ($locationProvider) {
-        $locationProvider.html5Mode(false);
-    }]).run();
+    .run();
