@@ -1,16 +1,37 @@
-const http = require('request');
+'use strict';
+
+let Stocks = require('../models/stocks');
 
 module.exports = {
-    get: (request, response) => {
-
+    create: (request, response) => {
+        return new Stocks(Object.assign(request.body, {shares: 1}))
+            .save()
+            .then((stock)=> {
+                response.json(stock.toJSON());
+            });
     },
-    save: (request, response) => {
-
+    read: (request, response) => {
+        return Stocks.fetchAll()
+            .then((stocks) => {
+                response.json(stocks.toJSON());
+            });
     },
     update: (request, response) => {
-
+        return new Stocks({id: request.body.id})
+            .save({
+                shares: request.body.shares
+            }, {
+                patch: true
+            })
+            .then((stock)=> {
+                response.json(stock.toJSON());
+            });
     },
-    delete: (request, response) => {
-
+    destroy: (request, response) => {
+        return new Stocks({id: request.params.id})
+            .destroy()
+            .then((model) => {
+                response.json(model.toJSON());
+            });
     }
 };

@@ -13,6 +13,10 @@ class Dashboard extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.getStocks();
+    }
+
     render() {
         return (
             <section>
@@ -27,7 +31,7 @@ class Dashboard extends React.Component {
                     </div>
                 </nav>
                 <Stocks stocks={this.props.stocks}
-                        adjustAmount={this.props.adjustAmount}
+                        adjustShares={this.props.adjustShares}
                         removeStock={this.props.removeStock}
                         getQuotes={this.props.getQuotes}/>
             </section>

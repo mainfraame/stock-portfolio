@@ -1,18 +1,20 @@
 export default function reducer(state = [], action = {}) {
     switch (action.type) {
-        case 'ADD_STOCK':
+        case 'ADDED_STOCK':
             let hasStock = state.some((stock)=> {
                 return stock.symbol === action.stock.symbol;
             });
             return hasStock ? state : state.concat([action.stock]);
-        case 'REMOVE_STOCK':
+        case 'STOCKS_READY':
+            return state.concat(action.stocks);
+        case 'REMOVED_STOCK':
             return state.filter((stock) => {
-                return stock.symbol !== action.stock.symbol;
+                return stock.id !== action.stock.id;
             });
-        case 'ADJUST_STOCK_AMOUNT':
+        case 'ADJUSTED_SHARES':
             return state.map((stock) => {
                 if (stock.symbol === action.stock.symbol) {
-                    stock.amount = action.stock.amount;
+                    stock.shares = action.stock.shares;
                 }
                 return stock;
             });

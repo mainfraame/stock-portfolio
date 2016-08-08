@@ -1,12 +1,11 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const angular = require('./webpack.angular.config');
+const react = require('./webpack.react.config');
 
-module.exports = {
-    entry: path.resolve('./public/index.jsx'),
+var base = {
     output: {
         path: path.resolve('./dist'),
         filename: 'bundle.js'
@@ -18,12 +17,12 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 query: {
-                    presets: ['es2015', 'react', 'stage-0']
+                    presets: ['es2015', 'react']
                 }
             },
             {
                 test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
+                loaders: ['style', 'css', 'sass']
             },
             {test: /\.woff2$/, loader: 'url-loader?limit=10000&minetype=application/font-woff2'},
             {test: /\.woff$/, loader: 'url-loader?limit=10000&minetype=application/font-woff'},
@@ -33,23 +32,12 @@ module.exports = {
         ]
     },
     resolve: {
-        alias: {
-            actions: path.resolve('./public/redux/actions'),
-            components: path.resolve('./public/components'),
-            reducers: path.resolve('./public/redux/reducers'),
-            store: path.resolve('./public/redux/store'),
-            utils: path.resolve('./public/utils'),
-            views: path.resolve('./public/views')
-        },
-        extensions: ['', '.js', '.jsx'],
         root: path.resolve(__dirname)
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve('./public/index.html')
-        })
-    ],
     sassLoader: {
         includePaths: [path.resolve('./node_modules/bootstrap/scss')]
     }
 };
+
+//module.exports = Object.assign(base, process.argv[3] === 'react' ? react : angular);
+module.exports = base;

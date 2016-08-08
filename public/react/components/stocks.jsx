@@ -20,16 +20,18 @@ export default class Stocks extends React.Component {
         this.props.getQuotes(this.props.stocks);
     }
 
-    adjustAmount(stock, e) {
-        stock.amount = e.target.value;
-        this.props.adjustAmount(stock);
+    adjustShares(stock, e) {
+        stock.shares = Number(e.target.value);
+        this.props.adjustShares(stock);
     }
 
     createRow(stock) {
-        let changeClass = parseFloat(stock.PercentChange || 0) > 0 ? 'glyphicon glyphicon-arrow-up' : 'glyphicon glyphicon-arrow-down';
+        let changeClass = parseFloat(stock.PercentChange || 0) > 0 ?
+            'glyphicon glyphicon-arrow-up' :
+            'glyphicon glyphicon-arrow-down';
 
         return (
-            <tr key={stock.symbol}>
+            <tr key={stock.id}>
                 <td>{stock.company}</td>
                 <td>{stock.symbol}</td>
                 <td>
@@ -39,15 +41,15 @@ export default class Stocks extends React.Component {
                 <td>
                     <input type='text'
                            className='form-control'
-                           onKeyUp={this.adjustAmount.bind(this,stock)}
-                           defaultValue={stock.amount}/>
+                           onKeyUp={this.adjustShares.bind(this, stock)}
+                           defaultValue={stock.shares}/>
                 </td>
                 <td>
-                    {((stock.LastTradePriceOnly || 0) * Number(stock.amount)).toFixed(2)}
+                    {((stock.LastTradePriceOnly || 0) * stock.shares).toFixed(2)}
                 </td>
                 <td>
                     <button className='btn btn-primary'
-                            onClick={this.props.removeStock.bind(this,stock)}>
+                            onClick={this.props.removeStock.bind(this, stock)}>
                         <i className='glyphicon glyphicon-trash'/>
                     </button>
                 </td>

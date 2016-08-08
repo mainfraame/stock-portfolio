@@ -1,7 +1,15 @@
+'use strict';
+
 const http = require('request');
 
 module.exports = {
     get: (request, response) => {
-        http({url: 'https://chstocksearch.herokuapp.com/api/' + request.params.symbol, json: true}).pipe(response);
+        let term = request.query.term;
+
+        if (term) {
+            http({url: 'https://chstocksearch.herokuapp.com/api/' + term, json: true}).pipe(response);
+        } else {
+            response.json([]);
+        }
     }
 };

@@ -1,0 +1,50 @@
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+body {
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+table.table tbody tr td {
+  vertical-align: middle;
+}
+
+.stock-suggestions {
+  $width: 250px;
+  position: relative;
+
+  input {
+    width: $width;
+  }
+
+  ul {
+    position: absolute;
+    top: 100%;
+    list-style: none;
+    padding: 0;
+    background: #ffffff;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+    width: $width;
+
+    li {
+      padding: 6px 12px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.25);
+        color: white;
+      }
+    }
+  }
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.text-right {
+  text-align: right;
+}

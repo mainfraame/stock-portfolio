@@ -1,7 +1,7 @@
 [
   {
     "method": "get",
-    "path": "/suggestions/:symbol",
+    "path": "/suggestions",
     "controller": "./controllers/suggestions",
     "controllerMethod": "get"
   },
@@ -15,24 +15,24 @@
     "method": "get",
     "path": "/stocks",
     "controller": "./controllers/stocks",
-    "controllerMethod": "get"
+    "controllerMethod": "read"
   },
   {
     "method": "put",
-    "path": "/stocks/:symbol",
-    "controller": "./controllers/stocks",
-    "controllerMethod": "save"
-  },
-  {
-    "method": "post",
-    "path": "/stocks/:symbol",
+    "path": "/stocks",
     "controller": "./controllers/stocks",
     "controllerMethod": "update"
   },
   {
-    "method": "delete",
-    "path": "/stocks/:symbol",
+    "method": "post",
+    "path": "/stocks",
     "controller": "./controllers/stocks",
-    "controllerMethod": "delete"
+    "controllerMethod": "create"
+  },
+  {
+    "method": "delete",
+    "path": "/stocks/:id",
+    "controller": "./controllers/stocks",
+    "controllerMethod": "destroy"
   }
 ]

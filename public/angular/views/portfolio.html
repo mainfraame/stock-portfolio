@@ -1,0 +1,44 @@
+<section>
+    <h1>Portfolio</h1>
+    <stock-suggestions on-select="$ctrl.onSelect"
+                       selected="$ctrl.stocks"></stock-suggestions>
+    <hr/>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Company</th>
+            <th>Symbol</th>
+            <th class="text-right">Last Price</th>
+            <th># of Shares</th>
+            <th class="text-right">Market Value</th>
+            <th class="text-right"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="stock in $ctrl.stocks track by stock.id">
+            <td>{{ ::stock.company }}</td>
+            <td>{{ ::stock.symbol }}</td>
+            <td class="text-right">
+                <indicator change="stock.PercentChange"></indicator>
+                {{ stock.LastTradePriceOnly }}
+            </td>
+            <td>
+                <input type="number"
+                       class="form-control"
+                       ng-model="stock.shares"
+                       ng-change="$ctrl.updateShares(stock)"
+                       ng-model-options="{ debounce: 300 }"/>
+            </td>
+            <td class="text-right">
+                {{ ((stock.LastTradePriceOnly || 0) * stock.shares) | currency }}
+            </td>
+            <td class="text-right">
+                <button class="btn btn-sm btn-danger"
+                        ng-click="$ctrl.removeStock(stock)">
+                    <i class='glyphicon glyphicon-trash'></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
