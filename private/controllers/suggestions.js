@@ -3,7 +3,7 @@
 const http = require('request');
 
 module.exports = {
-    get: (request, response) => {
+    get: function (request, response) {
         if (request.query.term) {
             http({url: 'https://chstocksearch.herokuapp.com/api/' + request.query.term, json: true}).pipe(response);
         } else {

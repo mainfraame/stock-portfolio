@@ -1,12 +1,12 @@
 export default ['$http', ($http) => {
     return {
-        getAll: function() {
+        getAll: function () {
             return $http.get('/stocks')
                 .then((results) => {
                     return results.data;
                 });
         },
-        getQuotes: function(stocks) {
+        getQuotes: function (stocks) {
             return $http.get('/quotes', {
                 params: {
                     symbol: stocks.map((stock) => {
@@ -17,19 +17,19 @@ export default ['$http', ($http) => {
                 return results.data;
             });
         },
-        createStock: function(stock) {
+        createStock: function (stock) {
             return $http.post('/stocks', stock)
                 .then((results) => {
                     return results.data;
                 });
         },
-        removeStock: function(stock) {
+        removeStock: function (stock) {
             return $http.delete('/stocks/' + stock.id)
                 .then(() => {
                     return stock;
                 });
         },
-        updateShares: function(stock) {
+        updateShares: function (stock) {
             return $http.put('/stocks', stock)
                 .then(() => {
                     return stock;

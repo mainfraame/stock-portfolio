@@ -7,9 +7,9 @@ const getQuoteUrl = (symbols) => {
 };
 
 module.exports = {
-    get: (request, response) => {
+    get: function (request, response) {
         http({url: getQuoteUrl(request.query.symbol), json: true}, (error, headers, body) => {
-            if(!error) {
+            if (!error) {
                 if (!Array.isArray(body.query.results.quote)) {
                     body.query.results.quote = [body.query.results.quote];
                 }
