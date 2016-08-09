@@ -7,7 +7,7 @@
 ### Build UI
 `npm run build`
 
-### Run ALL Linting
+### Run All Linting
 `npm run lint`
 
 ### Run UI Linting
