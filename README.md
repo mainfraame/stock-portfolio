@@ -1,9 +1,8 @@
 # stock-portfolio
 
 ### To start the project
-`npm install
- npm start
-`
+`npm install`
+`npm start`
 
 ### Build UI
 `npm run build`
