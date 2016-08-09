@@ -24,7 +24,7 @@ export default ['$http', function ($http) {
                 });
         },
         removeStock (stock) {
-            return $http.delete('/stocks/${stock.id}')
+            return $http.delete('/stocks/' + stock.id)
                 .then(() => {
                     return stock;
                 });

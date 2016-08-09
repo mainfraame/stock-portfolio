@@ -38,7 +38,7 @@ module.exports = (config) => {
                     }
                 ],
                 resolve: {
-                    extensions: ['', '.js', '.html'],
+                    extensions: ['', '.html', '.js', '.json'],
                     root: './'
                 },
                 htmlLoader: {

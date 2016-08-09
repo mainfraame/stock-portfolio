@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "build": "$(npm bin)/webpack --config ./public/webpack.conf.js --progress",
-    "lint": "$(npm bin)/eslint --config ./private/.eslintrc.json  ./private/.",
-    "lint:server": "$(npm bin)/eslint --config ./private/.eslintrc.json  ./private/.",
-    "prebuild": "$(npm bin)/eslint --ignore-path ./public/.eslintignore --config ./public/.eslintrc.json  ./public/.",
-    "prestart": "npm run build",
-    "start": "node private/index.js",
-    "test": "$(npm bin)/karma start ./public/karma.conf.js",
-    "test:live": "$(npm bin)/karma start ./public/karma.conf.js --auto-watch --no-single-run"
+    "lint": "npm run lint:ui && npm run lint:server",
+    "lint:ui": "$(npm bin)/eslint --ignore-path ./public/.eslintignore --config ./public/.eslintrc.json  ./public/.",
+    "lint:server": "$(npm bin)/eslint --config ./private/src/.eslintrc.json  ./private/src/.",
+    "prebuild": "npm run lint",
+    "poststart": "node private/src/index.js",
+    "prestart": "npm test",
+    "start": "npm run build",
+    "test": "npm run test:ui",
+    "test:ui": "$(npm bin)/karma start ./public/karma.conf.js"
   },
   "author": "dayne mentier",
   "license": "MIT",

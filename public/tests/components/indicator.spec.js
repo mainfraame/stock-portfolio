@@ -21,7 +21,7 @@ describe('Given StocksIndicator component is rendered', () => {
     ];
 
     scenarios.forEach((scenario) => {
-        describe('When StocksIndicator is rendered with change value of ${scenario.change}', () => {
+        describe('When StocksIndicator is rendered with change value of' + scenario.change, () => {
             beforeEach(angular.mock.module('components'));
             beforeEach(angular.mock.inject(($rootScope, $compile) => {
                 scope = $rootScope.$new();
@@ -31,7 +31,7 @@ describe('Given StocksIndicator component is rendered', () => {
                 $rootScope.$digest();
             }));
 
-            it('Then the element should have the class(es) ${scenario.expect}', () => {
+            it('Then the element should have the class(es)' + scenario.expect, () => {
                 expect(element.find('i').attr('class')).toEqual(scenario.expect);
             });
         });
