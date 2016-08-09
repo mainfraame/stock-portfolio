@@ -14,7 +14,7 @@ module.exports = {
         };
 
         http(config, (error, headers, body) => {
-            if (!error) {
+            if (!error && body.query.results) {
                 if (!Array.isArray(body.query.results.quote)) {
                     body.query.results.quote = [body.query.results.quote];
                 }

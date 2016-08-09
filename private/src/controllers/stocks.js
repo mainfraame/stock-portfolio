@@ -2,35 +2,39 @@ const Stocks = require('../models/stocks');
 
 module.exports = {
     create (request, response) {
-        return new Stocks(Object.assign(request.body, {shares: 1}))
-            .save()
+        return Stocks
+            .create(Object.assign(request.body, {shares: 1}))
             .then((stock) => {
-                response.json(stock.toJSON());
+                response.json(stock);
             });
     },
     read (request, response) {
         return Stocks
-            .fetchAll()
-            .then((stocks) => {
-                response.json(stocks.toJSON());
+            .findAll()
+            .then((results) => {
+                response.json(results);
             });
     },
     update (request, response) {
-        return new Stocks({id: request.body.id})
-            .save({
-                shares: request.body.shares
-            }, {
-                patch: true
+        return Stocks
+            .update(request.body, {
+                where: {
+                    id: request.body.id
+                }
             })
-            .then((stock) => {
-                response.json(stock.toJSON());
+            .then(() => {
+                response.json(request.body);
             });
     },
     destroy (request, response) {
-        return new Stocks({id: request.params.id})
-            .destroy()
-            .then((model) => {
-                response.json(model.toJSON());
+        return Stocks
+            .destroy({
+                where: {
+                    id: request.params.id
+                }
+            })
+            .then(() => {
+                response.json(Number(request.params.id));
             });
     }
 };

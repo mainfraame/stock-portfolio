@@ -1,10 +1,15 @@
-module.exports = require('bookshelf')(require('knex')({
-    client: 'mysql',
-    connection: {
-        host: '127.0.0.1',
-        user: 'root',
-        password: 'abc',
-        database: 'portfolio',
-        charset: 'utf8'
-    }
-}));
+const Sequelize = require('sequelize');
+
+let configuration;
+
+if (process.env.NODE_ENV === 'test') {
+    configuration = {
+        storage: '../tests/portfolio.sqlite'
+    };
+} else {
+    configuration = {};
+}
+
+module.exports = new Sequelize('portfolio', 'root', 'abc', Object.assign({
+    logging: false
+}, configuration));

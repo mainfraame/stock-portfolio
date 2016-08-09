@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.14)
 # Database: portfolio
-# Generation Time: 2016-08-08 21:29:58 +0000
+# Generation Time: 2016-08-09 23:31:22 +0000
 # ************************************************************
 
 
@@ -27,28 +27,14 @@ DROP TABLE IF EXISTS `stocks`;
 
 CREATE TABLE `stocks` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `symbol` text NOT NULL,
   `company` text NOT NULL,
-  `shares` int(11) NOT NULL DEFAULT '1',
+  `symbol` text NOT NULL,
+  `shares` int(11) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `stocks` WRITE;
-/*!40000 ALTER TABLE `stocks` DISABLE KEYS */;
-
-INSERT INTO `stocks` (`id`, `symbol`, `company`, `shares`)
-VALUES
-	(2,'AA','Alcoa Inc',5),
-	(3,'AZO','Autozone Inc',3),
-	(4,'C','Citigroup Inc',3),
-	(5,'APOL','Apollo Group Inc',3),
-	(6,'ADM','Archer Daniels Midla',2),
-	(8,'A','Agilent Technologies',2),
-	(9,'M','Macys Inc.',6),
-	(11,'AMCC','Applied Micro Circuits',3);
-
-/*!40000 ALTER TABLE `stocks` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 
