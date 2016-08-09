@@ -1,6 +1,6 @@
 export default ['$http', ($http) => {
     return {
-        getSuggestions: (term) => {
+        getSuggestions: function(term) {
             return $http.get('/suggestions', {
                 params: {
                     term: term
