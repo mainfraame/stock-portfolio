@@ -7,7 +7,9 @@ describe('Given StockLogo component is rendered', () => {
 
     const testSymbol = 'AAPL';
     const response = {
-        URL: 'http://foo.com/bar.gif'
+        data: {
+            URL: 'http://foo.com/bar.gif'
+        }
     };
     const $http = {
         jsonp () {
@@ -38,7 +40,7 @@ describe('Given StockLogo component is rendered', () => {
         });
 
         it('Then sets the src on the img element', () => {
-            expect(element.find('img').attr('src')).toEqual(response.URL);
+            expect(element.find('img').attr('src')).toEqual(response.data.URL);
         });
     });
 });
