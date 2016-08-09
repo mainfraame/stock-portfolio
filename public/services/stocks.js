@@ -1,4 +1,4 @@
-export default ['$http', ($http) => {
+export default ['$http', function ($http) {
     return {
         getAll: function () {
             return $http.get('/stocks')
