@@ -1,7 +1,7 @@
 {
   "name": "stock-portfolio",
   "version": "0.1.0",
-  "description": "sample stock portfolio project for NYSE",
+  "description": "sample stock portfolio project",
   "main": "index.js",
   "scripts": {
     "build": "$(npm bin)/webpack --config ./public/webpack.conf.js --progress",
