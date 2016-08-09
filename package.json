@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack --config ./public/webpack.conf.js --progress",
-    "start": "node private/index.js",
+    "start": "npm run build && node private/index.js",
     "test": "./node_modules/.bin/karma start ./public/karma.conf.js",
-    "test:live": "./node_modules/.bin/karma start --auto-watch --no-single-run"
+    "test:live": "./node_modules/.bin/karma start ./public/karma.conf.js --auto-watch --no-single-run"
   },
   "author": "dayne mentier",
   "license": "MIT",
