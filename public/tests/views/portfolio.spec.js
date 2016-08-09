@@ -1,41 +1,41 @@
 import angular from 'angular';
-import portfolio from '../../src/views/index';
+import '../../src/views/index';
 import quotes from 'json!../fixtures/quotes';
 import quotedStocks from 'json!../fixtures/quotedStocks';
 import stocks from 'json!../fixtures/stocks';
 
-describe('Given Portfolio component is rendered', function () {
-    var controller;
-    var scope;
-    var $interval;
-    var $stocksService = {
-        createStock: function () {
+describe('Given Portfolio component is rendered', () => {
+    let controller;
+    let scope;
+    let $interval;
+    const $stocksService = {
+        createStock: () => {
         },
-        getAll: function () {
+        getAll: () => {
         },
-        getQuotes: function () {
+        getQuotes: () => {
         },
-        removeStock: function () {
+        removeStock: () => {
         },
-        updateShares: function () {
+        updateShares: () => {
         }
     };
 
-    var newStock = {
+    const newStock = {
         id: 6,
         company: 'Alphabet Inc.',
         shares: 1,
         symbol: 'GOOGL'
     };
 
-    beforeEach(angular.mock.module('views', function ($provide) {
+    beforeEach(angular.mock.module('views', ($provide) => {
         $provide.value('stocksService', $stocksService);
     }));
 
-    beforeEach(angular.mock.inject(function ($injector) {
-        var $componentController = $injector.get('$componentController');
-        var $rootScope = $injector.get('$rootScope');
-        var $q = $injector.get('$q');
+    beforeEach(angular.mock.inject(($injector) => {
+        const $componentController = $injector.get('$componentController');
+        const $rootScope = $injector.get('$rootScope');
+        const $q = $injector.get('$q');
 
         $interval = $injector.get('$interval');
 
@@ -50,65 +50,65 @@ describe('Given Portfolio component is rendered', function () {
         scope.$digest();
     }));
 
-    it('Then calls $stocksService.getAll', function () {
+    it('Then calls $stocksService.getAll', () => {
         expect($stocksService.getAll).toHaveBeenCalled();
     });
 
-    it('Then calls $stocksService.getQuotes with the returned stocks array', function () {
+    it('Then calls $stocksService.getQuotes with the returned stocks array', () => {
         expect($stocksService.getQuotes).toHaveBeenCalledWith(controller.stocks);
     });
 
-    it('Then merges the quotes with the stocks array', function () {
+    it('Then merges the quotes with the stocks array', () => {
         expect(controller.stocks).toEqual(quotedStocks);
     });
 
-    describe('When the onSelect method is called', function () {
-        beforeEach(function () {
+    describe('When the onSelect method is called', () => {
+        beforeEach(() => {
             $stocksService.getQuotes.calls.reset();
             controller.onSelect(newStock);
             scope.$digest();
         });
 
-        it('Then calls $stocksService.createStock with new stock object', function () {
+        it('Then calls $stocksService.createStock with new stock object', () => {
             expect($stocksService.createStock).toHaveBeenCalledWith(newStock);
         });
 
-        it('Then calls $stocksService.getQuotes', function () {
+        it('Then calls $stocksService.getQuotes', () => {
             expect($stocksService.getQuotes).toHaveBeenCalled();
         });
     });
 
-    describe('When the removeSelect method is called', function () {
-        var removedStock;
-        beforeEach(function () {
+    describe('When the removeSelect method is called', () => {
+        let removedStock;
+        beforeEach(() => {
             removedStock = controller.stocks[0];
             controller.removeStock(removedStock);
             scope.$digest();
         });
 
-        it('Then removes the stock from the stocks array', function () {
+        it('Then removes the stock from the stocks array', () => {
             expect(controller.stocks).not.toContain(removedStock);
         });
     });
 
-    describe('When the pull interval is reached for getQuotes', function () {
-        beforeEach(function () {
+    describe('When the pull interval is reached for getQuotes', () => {
+        beforeEach(() => {
             $stocksService.getQuotes.calls.reset();
             $interval.flush(5000);
             scope.$digest();
         });
 
-        it('Then calls $stocksService.getQuotes', function () {
+        it('Then calls $stocksService.getQuotes', () => {
             expect($stocksService.getQuotes).toHaveBeenCalled();
         });
     });
 
-    describe('When $onDestroy is called', function () {
-        beforeEach(function () {
+    describe('When $onDestroy is called', () => {
+        beforeEach(() => {
             controller.$onDestroy();
         });
 
-        it('Then cancels the interval', function () {
+        it('Then cancels the interval', () => {
             expect($interval.cancel).toHaveBeenCalled();
         });
     });

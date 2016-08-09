@@ -21,9 +21,9 @@ export default {
         const $suggestions = $injector.get('suggestionService');
 
         this.onChange = () => {
-            $suggestions.getSuggestions(this.term).then((suggestions)=> {
-                this.suggestions = suggestions.filter((suggestion)=> {
-                    return !this.selected.some((selected)=> {
+            $suggestions.getSuggestions(this.term).then((suggestions) => {
+                this.suggestions = suggestions.filter((suggestion) => {
+                    return !this.selected.some((selected) => {
                         return suggestion.symbol === selected.symbol;
                     });
                 });

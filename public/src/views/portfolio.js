@@ -1,16 +1,10 @@
 import template from 'html!./portfolio.html';
 
-module.exports = {
-    template: template,
+export default {
+    template,
     controller: ['$injector', function ($injector) {
-        let quotesInterval;
-        let $stocks = $injector.get('stocksService');
-        let $interval = $injector.get('$interval');
-
-        const getQuotes = () => {
-            $stocks.getQuotes(this.stocks)
-                .then(mergeQuotes);
-        };
+        const $stocks = $injector.get('stocksService');
+        const $interval = $injector.get('$interval');
 
         const mergeQuotes = (quotes) => {
             this.stocks.forEach((stock) => {
@@ -22,19 +16,26 @@ module.exports = {
             });
         };
 
+        const getQuotes = () => {
+            $stocks.getQuotes(this.stocks)
+                .then(mergeQuotes);
+        };
+
+        const quotesInterval = $interval(getQuotes, 5000);
+
         this.$onDestroy = () => {
             $interval.cancel(quotesInterval);
         };
 
         this.onSelect = (stock) => {
-            $stocks.createStock(stock).then((stock)=> {
-                this.stocks.push(stock);
+            $stocks.createStock(stock).then((newStock) => {
+                this.stocks.push(newStock);
                 getQuotes();
             });
         };
 
         this.removeStock = (stock) => {
-            $stocks.removeStock(stock).then(()=> {
+            $stocks.removeStock(stock).then(() => {
                 this.stocks.splice(this.stocks.indexOf(stock), 1);
             });
         };
@@ -42,8 +43,6 @@ module.exports = {
         this.updateShares = (stock) => {
             $stocks.updateShares(stock);
         };
-
-        quotesInterval = $interval(getQuotes, 5000);
 
         $stocks.getAll().then((stocks) => {
             this.stocks = stocks;

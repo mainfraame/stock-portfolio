@@ -1,11 +1,14 @@
-'use strict';
-
 const http = require('request');
 
 module.exports = {
-    get: function (request, response) {
+    get (request, response) {
         if (request.query.term) {
-            http({url: 'https://chstocksearch.herokuapp.com/api/' + request.query.term, json: true}).pipe(response);
+            const config = {
+                url: 'https://chstocksearch.herokuapp.com/api/' + request.query.term,
+                json: true
+            };
+
+            http(config).pipe(response);
         } else {
             response.json([]);
         }

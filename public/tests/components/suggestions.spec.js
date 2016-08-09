@@ -1,25 +1,25 @@
 import angular from 'angular';
-import portfolio from '../../src/components/index';
+import '../../src/components/index';
 import stocks from 'json!../fixtures/stocks';
 import suggestions from 'json!../fixtures/suggestions';
 
-describe('Given Suggestions component is rendered', function () {
-    var controller;
-    var scope;
-    var element;
-    var $suggestionService = {
-        getSuggestions: function () {
+describe('Given Suggestions component is rendered', () => {
+    let controller;
+    let scope;
+    let element;
+    const $suggestionService = {
+        getSuggestions () {
         }
     };
 
-    beforeEach(angular.mock.module('components', function ($provide) {
+    beforeEach(angular.mock.module('components', ($provide) => {
         $provide.value('suggestionService', $suggestionService);
     }));
 
-    beforeEach(angular.mock.inject(function ($rootScope, $compile, $q) {
+    beforeEach(angular.mock.inject(($rootScope, $compile, $q) => {
         scope = angular.extend($rootScope.$new(), {
-            stocks: stocks,
-            onSelect: function () {
+            stocks,
+            onSelect () {
             }
         });
 
@@ -33,36 +33,36 @@ describe('Given Suggestions component is rendered', function () {
         scope.$digest();
     }));
 
-    describe('When a term is search for and the suggestions are returned', function () {
-        beforeEach(function () {
+    describe('When a term is search for and the suggestions are returned', () => {
+        beforeEach(() => {
             controller.term = 'foo';
             controller.onChange();
             scope.$digest();
         });
 
-        it('Then parses the existing selected stocks from the suggestions', function () {
+        it('Then parses the existing selected stocks from the suggestions', () => {
             expect(controller.suggestions).not.toContain({
                 symbol: 'C',
                 company: 'Citigroup Inc.'
             });
         });
 
-        describe('When a suggested stock is selected', function () {
-            beforeEach(function () {
+        describe('When a suggested stock is selected', () => {
+            beforeEach(() => {
                 scope.onSelect.calls.reset();
                 $suggestionService.getSuggestions.calls.reset();
                 controller.select(suggestions[0]);
             });
 
-            it('Then calls the on-select callback', function () {
+            it('Then calls the on-select callback', () => {
                 expect(scope.onSelect).toHaveBeenCalledWith(suggestions[0]);
             });
 
-            it('Then resets the term property', function () {
+            it('Then resets the term property', () => {
                 expect(controller.term).toEqual('');
             });
 
-            it('Then calls $suggestionService.getSuggestions', function () {
+            it('Then calls $suggestionService.getSuggestions', () => {
                 expect($suggestionService.getSuggestions).toHaveBeenCalledWith('');
             });
         });

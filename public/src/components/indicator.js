@@ -6,7 +6,7 @@ export default {
         'glyphicon glyphicon-arrow-up green' : ($ctrl.parseFloat($ctrl.change) > 0),
         'glyphicon glyphicon-arrow-down red' : ($ctrl.parseFloat($ctrl.change) < 0),
     }"></i>`,
-    controller: function () {
+    controller () {
         this.parseFloat = parseFloat;
     }
 };

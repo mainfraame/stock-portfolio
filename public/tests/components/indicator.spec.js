@@ -1,11 +1,11 @@
 import angular from 'angular';
 import '../../src/components/index';
 
-describe('Given StocksIndicator component is rendered', function () {
-    var element;
-    var scope;
+describe('Given StocksIndicator component is rendered', () => {
+    let element;
+    let scope;
 
-    var scenarios = [
+    const scenarios = [
         {
             change: '+1.25%',
             expect: 'glyphicon glyphicon-arrow-up green'
@@ -20,10 +20,10 @@ describe('Given StocksIndicator component is rendered', function () {
         }
     ];
 
-    scenarios.forEach(function (scenario) {
-        describe('When StocksIndicator is rendered with change value of ' + scenario.change, function () {
+    scenarios.forEach((scenario) => {
+        describe('When StocksIndicator is rendered with change value of ${scenario.change}', () => {
             beforeEach(angular.mock.module('components'));
-            beforeEach(angular.mock.inject(function ($rootScope, $compile) {
+            beforeEach(angular.mock.inject(($rootScope, $compile) => {
                 scope = $rootScope.$new();
                 element = angular.element('<stock-indicator change="change"></stock-indicator>');
                 element = $compile(element)(scope);
@@ -31,7 +31,7 @@ describe('Given StocksIndicator component is rendered', function () {
                 $rootScope.$digest();
             }));
 
-            it('Then the element should have the class(es)' + scenario.expect, function () {
+            it('Then the element should have the class(es) ${scenario.expect}', () => {
                 expect(element.find('i').attr('class')).toEqual(scenario.expect);
             });
         });

@@ -1,0 +1,4 @@
+*/dist/**/*.js
+*/karma.conf.js
+*/tests/config.js
+*/webpack.conf.js

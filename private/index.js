@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public/dist')));
 
-controllers.forEach(function (config) {
+controllers.forEach((config) => {
     app[config.method](config.path, require(config.controller)[config.controllerMethod]);
 });
 

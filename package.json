@@ -4,10 +4,14 @@
   "description": "sample stock portfolio project for NYSE",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config ./public/webpack.conf.js --progress",
-    "start": "npm run build && node private/index.js",
-    "test": "./node_modules/.bin/karma start ./public/karma.conf.js",
-    "test:live": "./node_modules/.bin/karma start ./public/karma.conf.js --auto-watch --no-single-run"
+    "build": "$(npm bin)/webpack --config ./public/webpack.conf.js --progress",
+    "lint": "$(npm bin)/eslint --config ./private/.eslintrc.json  ./private/.",
+    "lint:server": "$(npm bin)/eslint --config ./private/.eslintrc.json  ./private/.",
+    "prebuild": "$(npm bin)/eslint --ignore-path ./public/.eslintignore --config ./public/.eslintrc.json  ./public/.",
+    "prestart": "npm run build",
+    "start": "node private/index.js",
+    "test": "$(npm bin)/karma start ./public/karma.conf.js",
+    "test:live": "$(npm bin)/karma start ./public/karma.conf.js --auto-watch --no-single-run"
   },
   "author": "dayne mentier",
   "license": "MIT",
@@ -30,6 +34,7 @@
     "babel-preset-es2015": "^6.9.0",
     "bootstrap-sass": "^3.3.7",
     "bootstrap-sass-webpack": "0.0.3",
+    "eslint": "^3.2.2",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.21.0",
