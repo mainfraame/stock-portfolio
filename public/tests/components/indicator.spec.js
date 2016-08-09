@@ -1,5 +1,5 @@
 import angular from 'angular';
-import '../../components/index';
+import '../../src/components/index';
 
 describe('Given StocksIndicator component is rendered', function () {
     var element;

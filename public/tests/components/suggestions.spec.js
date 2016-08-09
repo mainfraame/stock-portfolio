@@ -1,5 +1,5 @@
 import angular from 'angular';
-import portfolio from '../../components/index';
+import portfolio from '../../src/components/index';
 import stocks from 'json!../fixtures/stocks';
 import suggestions from 'json!../fixtures/suggestions';
 

@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
     devtool: 'source-map',
-    entry: './public/index.js',
+    entry: './public/src/index.js',
     module: {
         htmlLoader: {
             ignoreCustomFragments: [/\{\{.*?}}/]
@@ -31,23 +31,23 @@ module.exports = {
         ],
         resolve: {
             alias: {
-                components: './public/components',
-                services: './public/services',
-                views: './public/views'
+                components: './public/src/components',
+                services: './public/src/services',
+                views: './public/src/views'
             },
             extensions: ['', '.html', '.js', '.json'],
             root: __dirname
         }
     },
     output: {
-        path: './dist',
+        path: './public/dist',
         filename: 'bundle.js'
     },
     plugins: [
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin(),
         new HtmlWebpackPlugin({
-            template: './public/index.html'
+            template: './public/src/index.html'
         })
     ],
     sassLoader: {

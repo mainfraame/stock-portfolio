@@ -1,8 +1,5 @@
 'use strict';
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-
 module.exports = (config) => {
     config.set({
         browsers: ['PhantomJS'],
@@ -10,10 +7,10 @@ module.exports = (config) => {
             dir: './dist/coverage/',
             type: 'html'
         },
-        files: ['./public/_tests_/config.js'],
+        files: ['./tests/config.js'],
         frameworks: ['jasmine', 'es6-shim'],
         preprocessors: {
-            './public/_tests_/config.js': ['webpack', 'sourcemap']
+            './tests/config.js': ['webpack', 'sourcemap']
         },
         reporters: ['spec', 'coverage'],
         singleRun: true,
@@ -42,16 +39,11 @@ module.exports = (config) => {
                 ],
                 resolve: {
                     extensions: ['', '.js', '.html'],
-                    root: __dirname
+                    root: './'
                 },
                 htmlLoader: {
                     ignoreCustomFragments: [/\{\{.*?}}/]
                 }
-            },
-            sassLoader: {
-                includePaths: [
-                    './node_modules/bootstrap/scss'
-                ]
             }
         }
     });
