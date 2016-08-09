@@ -5,7 +5,7 @@ module.exports = require('bookshelf')(require('knex')({
     connection: {
         host: '127.0.0.1',
         user: 'root',
-        password: 'abc',
+        password: '',
         database: 'portfolio',
         charset: 'utf8'
     }

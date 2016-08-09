@@ -1,8 +1,8 @@
 import angular from 'angular';
 import portfolio from '../../views/index';
-import quotes from '../fixtures/quotes';
-import quotedStocks from '../fixtures/quotedStocks';
-import stocks from '../fixtures/stocks';
+import quotes from 'json!../fixtures/quotes';
+import quotedStocks from 'json!../fixtures/quotedStocks';
+import stocks from 'json!../fixtures/stocks';
 
 describe('Given Portfolio component is rendered', function () {
     var controller;

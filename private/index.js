@@ -1,5 +1,3 @@
-"use strict";
-
 const bodyParser = require('body-parser');
 const controllers = require('./controllers/config.json');
 const cookieParser = require('cookie-parser');

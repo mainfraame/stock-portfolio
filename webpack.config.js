@@ -35,7 +35,7 @@ module.exports = {
                 services: './public/services',
                 views: './public/views'
             },
-            extensions: ['', '.html', '.js'],
+            extensions: ['', '.html', '.js', '.json'],
             root: __dirname
         }
     },

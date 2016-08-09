@@ -1,39 +1,39 @@
-'use strict';
-
-module.exports = ['$http', function ($http) {
+export default ['$http', ($http) => {
     return {
-        getAll: function () {
+        getAll: () => {
             return $http.get('/stocks')
-                .then(function (results) {
+                .then((results) => {
                     return results.data;
                 });
         },
-        getQuotes: function (stocks) {
+        getQuotes: (stocks) => {
             return $http.get('/quotes', {
                 params: {
-                    symbol: stocks.map(function (stock) {
+                    symbol: stocks.map((stock) => {
                         return stock.symbol;
-                    })
+                    }).join(',')
                 }
-            }).then(function (results) {
+            }).then((results) => {
                 return results.data;
             });
         },
-        createStock: function (stock) {
-            return $http.post('/stocks', stock).then(function (results) {
-                return results.data;
-            });
+        createStock: (stock) => {
+            return $http.post('/stocks', stock)
+                .then((results) => {
+                    return results.data;
+                });
         },
-        removeStock: function (stock) {
-            return $http.delete('/stocks/' + stock.id).then(function (stock) {
-                return stock;
-            }.bind(null, stock));
+        removeStock: (stock) => {
+            return $http.delete('/stocks/' + stock.id)
+                .then(() => {
+                    return stock;
+                });
         },
-        updateShares: function (stock) {
-            console.log('updating');
-            return $http.put('/stocks', stock).then(function (stock) {
-                return stock;
-            });
+        updateShares: (stock) => {
+            return $http.put('/stocks', stock)
+                .then(() => {
+                    return stock;
+                });
         }
     }
 }];

@@ -6,12 +6,13 @@ module.exports = {
     create: (request, response) => {
         return new Stocks(Object.assign(request.body, {shares: 1}))
             .save()
-            .then((stock)=> {
+            .then((stock) => {
                 response.json(stock.toJSON());
             });
     },
     read: (request, response) => {
-        return Stocks.fetchAll()
+        return Stocks
+            .fetchAll()
             .then((stocks) => {
                 response.json(stocks.toJSON());
             });
@@ -23,7 +24,7 @@ module.exports = {
             }, {
                 patch: true
             })
-            .then((stock)=> {
+            .then((stock) => {
                 response.json(stock.toJSON());
             });
     },

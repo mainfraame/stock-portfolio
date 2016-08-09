@@ -1,9 +1,7 @@
-'use strict';
-
 import angular from 'angular';
 import portfolio from '../../components/index';
-import stocks from '../fixtures/stocks';
-import suggestions from '../fixtures/suggestions';
+import stocks from 'json!../fixtures/stocks';
+import suggestions from 'json!../fixtures/suggestions';
 
 describe('Given Suggestions component is rendered', function () {
     var controller;

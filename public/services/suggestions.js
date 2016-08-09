@@ -1,13 +1,11 @@
-'use strict';
-
-module.exports = ['$http', function ($http) {
+export default ['$http', ($http) => {
     return {
-        getSuggestions: function (term) {
+        getSuggestions: (term) => {
             return $http.get('/suggestions', {
                 params: {
                     term: term
                 }
-            }).then(function (results) {
+            }).then((results) => {
                 return results.data;
             });
         }

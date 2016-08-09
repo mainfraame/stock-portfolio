@@ -1,6 +1,8 @@
-'use strict';
-
-module.exports = {
+export default {
+    bindings: {
+        onSelect: '=',
+        selected: '='
+    },
     template: `<section class="stock-suggestions">
         <input type="text"
                class="form-control"
@@ -15,12 +17,8 @@ module.exports = {
             </li>
         </ul>
     </section>`,
-    bindings: {
-        onSelect: '=',
-        selected: '='
-    },
     controller: ['$injector', function ($injector) {
-        let $suggestions = $injector.get('suggestionService');
+        const $suggestions = $injector.get('suggestionService');
 
         this.onChange = () => {
             $suggestions.getSuggestions(this.term).then((suggestions)=> {

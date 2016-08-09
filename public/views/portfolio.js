@@ -1,5 +1,3 @@
-'use strict';
-
 import template from 'html!./portfolio.html';
 
 module.exports = {

@@ -1,0 +1,8 @@
+[
+  {
+    "path": "/portfolio",
+    "name": "Portfolio",
+    "component": "portfolio",
+    "useAsDefault": true
+  }
+]

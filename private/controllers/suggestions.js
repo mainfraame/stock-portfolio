@@ -4,10 +4,8 @@ const http = require('request');
 
 module.exports = {
     get: (request, response) => {
-        let term = request.query.term;
-
-        if (term) {
-            http({url: 'https://chstocksearch.herokuapp.com/api/' + term, json: true}).pipe(response);
+        if (request.query.term) {
+            http({url: 'https://chstocksearch.herokuapp.com/api/' + request.query.term, json: true}).pipe(response);
         } else {
             response.json([]);
         }
