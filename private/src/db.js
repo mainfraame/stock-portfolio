@@ -10,6 +10,6 @@ if (process.env.NODE_ENV === 'test') {
     configuration = {};
 }
 
-module.exports = new Sequelize('portfolio', 'root', 'abc', Object.assign({
+module.exports = new Sequelize('portfolio', 'root', '', Object.assign({
     logging: false
 }, configuration));

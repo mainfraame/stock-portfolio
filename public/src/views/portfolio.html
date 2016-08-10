@@ -6,7 +6,6 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Logo</th>
             <th>Company</th>
             <th>Symbol</th>
             <th class="text-right">Last Price</th>
@@ -17,9 +16,6 @@
         </thead>
         <tbody>
         <tr ng-repeat="stock in $ctrl.stocks track by stock.id">
-            <td>
-                <stock-logo symbol="stock.symbol"></stock-logo>
-            </td>
             <td>{{ ::stock.company }}</td>
             <td>{{ ::stock.symbol }}</td>
             <td class="text-right">
