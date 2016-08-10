@@ -7,7 +7,7 @@ module.exports = db.define('stocks', {
         primaryKey: true,
         autoIncrement: true
     },
-    symbol: Sequalize.TEXT,
-    company: Sequalize.TEXT,
+    symbol: Sequalize.STRING(11),
+    company: Sequalize.STRING(255),
     shares: Sequalize.INTEGER
 });
