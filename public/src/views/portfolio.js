@@ -35,10 +35,8 @@ export default {
         };
 
         this.removeStock = (stock) => {
-            $stocks.removeStock(stock).then((id) => {
-                this.stocks.splice(this.stocks.filter((_stock) => {
-                    return _stock.id === id;
-                })[0], 1);
+            $stocks.removeStock(stock).then(() => {
+                this.stocks.splice(this.stocks.indexOf(stock), 1);
             });
         };
 
