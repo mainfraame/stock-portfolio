@@ -1,40 +1,12 @@
 # stock-portfolio
 
-#### Install
-```bash
-npm install
-```
+This project was done 4 years ago for my current position at the New York Stock Exchange.
 
-#### Run Tests
-```bash
-npm test
-```
+### NPM Commands
 
-#### Run Build
-```bash
-npm run build
-```
-### To start the project
-`npm install`
-`npm start`
-
-### Build UI
-`npm run build`
-
-### Run All Linting
-`npm run lint`
-
-### Run UI Linting
-`npm run lint:ui`
-
-### Run Server Linting
-`npm run lint:server`
-
-### Run All Unit Tests
-`npm test`
-
-### Run UI Unit Tests
-`npm run test:ui`
-
-### Run All Linting, UI Build, & Start Server
-`npm start`
+| Command  | Description |
+| ------------- | ------------- |
+| build  | run the webpack production build  |
+| lint | run eslint on the project |
+| start | run the webpack dev server |
+| test | run unit/integration tests  |
