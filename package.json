@@ -55,7 +55,7 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.8.0",
     "mock-knex": "^0.3.2",
-    "node-sass": "^3.8.0",
+    "node-sass": "^4.14.1",
     "null-loader": "^0.1.1",
     "sass-loader": "^4.0.0",
     "sequelize-mocking": "^0.2.0",
